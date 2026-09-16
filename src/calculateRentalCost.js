@@ -1,18 +1,23 @@
+const BASE_PRICE_PER_DAY = 40;
+const LONG_TERM_THRESHOLD = 7;
+const LONG_TERM_DISCOUNT = 50;
+const MEDIUM_TERM_THRESHOLD = 3;
+const MEDIUM_TERM_DISCOUNT = 20;
+
 /**
  * @param {number} days
  *
  * @return {number}
  */
 function calculateRentalCost(days) {
-  const pricePerDay = 40;
-  const totalCost = days * pricePerDay;
+  const totalCost = days * BASE_PRICE_PER_DAY;
 
-  if (days >= 7) {
-    return totalCost - 50;
+  if (days >= LONG_TERM_THRESHOLD) {
+    return totalCost - LONG_TERM_DISCOUNT;
   }
 
-  if (days >= 3) {
-    return totalCost - 20;
+  if (days >= MEDIUM_TERM_THRESHOLD) {
+    return totalCost - MEDIUM_TERM_DISCOUNT;
   }
 
   return totalCost;
